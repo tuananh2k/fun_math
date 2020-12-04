@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:fun_math/Play/Play.dart';
 
 void main() => runApp(MyApp());
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ Widget btn(String path) {
   );
 }
 
-Widget btnPlay(String path) {
+Widget btnPlay(String path, BuildContext context) {
   return Container(
     margin: EdgeInsets.all(10),
      alignment: Alignment.center,
@@ -75,7 +75,9 @@ Widget btnPlay(String path) {
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 30, color: Colors.white)),
       ]),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Play()));
+      },
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 100),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     ),
@@ -123,7 +125,9 @@ class _FunMathState extends State<FunMath> {
                             ],
                           ),
                           Row(
-                            children: [btnPlay('assets/icon/play.png')],
+                            children: [
+                              btnPlay('assets/icon/play.png',context),
+                            ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
